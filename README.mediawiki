@@ -1,4 +1,4 @@
-= AD =
+= Traversal =
 
 This is a Chicken Scheme egg which contains various list and matrix traversal
 functions. It's currently undocumented.
