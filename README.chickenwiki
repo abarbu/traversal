@@ -3,7 +3,7 @@
 
 Do not edit this page, it is maintained in the this package's [https://github.com/abarbu/traversal github repository].
 
-= AD =
+= Traversal =
 
 This is a Chicken Scheme egg which contains various list and matrix traversal
 functions. It's currently undocumented.
