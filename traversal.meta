@@ -1,0 +1,20 @@
+;;;  -*- Hen -*-
+
+((egg "traversal.egg")
+ (category misc)
+ (author "Jeffrey Mark Siskind")
+ (maintainer "Andrei Barbu")
+ (license "GPL")
+ (doc-from-wiki)
+ (synopsis "Traversal operators")
+ (depends
+  (setup-helper "1.5.2")
+  (miscmacros "2.91")
+  (check-errors "1.12.0")
+  (condition-utils "1.0.0")
+  (vector-lib "1.2.2"))
+ (test-depends test)
+ (files "traversal.meta" 
+        "traversal.release-info"
+        "traversal.scm" 
+        "traversal.setup"))
