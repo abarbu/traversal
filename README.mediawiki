@@ -1,7 +1,249 @@
 = Traversal =
 
-This is a Chicken Scheme egg which contains various list and matrix traversal
-functions. It's currently undocumented.
+This is a Chicken Scheme egg which contains various list and vector traversal functions.
+
+== overall ==
+
+The final character of many of these denotes the compairson function
+being used. 'q' compares with 'eq?', 'v' compares with 'eqv?', 'e'
+with 'equal?', 'p' and the lack of a final character denotes that the
+function takes a user-provided predicate.
+
+The following documentation uses the following notration: 'l' list,
+'n' number, 'v' vector, 'p' procedure (usually a predicate).
+
+Some of the functionality of this egg is provided by other eggs, like
+srfi-1, with different naming conventions.
+
+=== lists ===
+
+:(countq x l)
+:(countv x l)
+:(counte x l)
+:(countp p x l)
+:(count-if p l)
+:(count-if-not p l)
+
+:(findq x l)
+:(findv x l)
+:(finde x l)
+:(findp p x l)
+:(find-if p l)
+:(find-if-not p l)
+
+:(positionq x l)
+:(positionv x l)
+:(positione x l)
+:(position p l)
+:(positionp p x l)
+:(position-if p l)
+:(position-if-not p l)
+:(vector-positione val vector)
+
+:(remove-if p l)
+:(remove-if-not p l)
+:(removee x l)
+:(removep p x l)
+:(removeq x l)
+:(removev x l)
+
+:(remove-duplicatesq x)
+:(remove-duplicatesv x)
+:(remove-duplicates x)
+:(remove-duplicatesp p x)
+
+:(list-set! l i x)
+:(list-insert l i x)
+:(list-remove l i)
+:(list-replace l i x)
+
+:(equivalence-classesq x)
+:(equivalence-classesv x)
+:(equivalence-classesp p x)
+:(equivalence-classes x)
+:(transitive-equivalence-classesp p x)
+
+:(adjoinq x l)
+:(adjoinv x l)
+:(adjoin x l)
+:(adjoinp p x l)
+
+:(rest l)
+:(but-last l)
+:(sublist list start end)
+:(every-other list)
+
+Misc list manipulation stuff.
+
+:(sort list predicate key)
+
+Merge sort.
+
+:(lexicographically<? <? =?)
+:(minimal-membersp <? =? l)
+
+:(unzip l)
+
+Transposes lists.
+
+=== creation ===
+
+:(enumerate n)
+:(enumerate-vector n)
+
+Produce a list or a vector containing 0 through n-1.
+
+=== assertions ===
+
+:(some p l)
+:(some-n p n)
+:(some-vector p v)
+:(every-n p n)
+:(every-vector p v)
+:(one p l . &rest)
+:(one-n p n)
+:(one-vector p v . &rest)
+
+:(pairwise? p l)
+
+Does p hold on each adjacent pair of elements in l.
+
+=== traversal ===
+
+:(for-each-n f n)
+:(for-each-n-decreasing f n)
+:(map-n f n)
+:(map-n-vector f n)
+:(for-each-from-a-up-to-b f a b)
+:(for-each-m-n f m n)
+:(for-each-m-n-indexed f m n)
+:(for-each-m-n-dec f m n)
+:(map-m-n f m n)
+:(map-m-n-indexed f m n)
+
+:(for-each-vector f v . &rest)
+:(map-vector f v . &rest)
+
+Like 'vector-map' but take an arbitrary number of vectors.
+
+:(map-linear f start end n)
+
+Map linearly between 'start' and 'end' in 'n' steps.
+
+:(reduce-n f i n)
+:(reduce-vector f i v)
+:(map-reduce g i f l . ls)
+:(map-reduce-n g i f n)
+:(map-reduce-vector g i f v . vs)
+:(map-reduce2 g i f l)
+:(map-reduce3 g i f l1 l2)
+
+Reduces are left folds.
+
+:(for-each-indexed f l)
+:(map-indexed f l)
+:(for-each-indexed-vector f v)
+:(map-indexed-vector f v . &rest)
+
+Passes 'f' both the element and an offset into the list/vector.
+
+:(map-medial f l key)
+
+'f' is passed each adjacent pair of elements in l after being sorted
+by the key. Key must return a number given each element of l.
+
+:(all-pairs l)
+:(map-all-pairs f l)
+
+'f' is passed each adjacent pair of elements in l.
+
+:(memp p x l)
+:(assp p x alist)
+
+Like memq and assq but take a predicate for comparison.
+
+:(map-accum f i l)
+
+f will be passed the accumulator and each element of the list.
+
+=== sets ===
+
+:(unionq x y)
+:(unionv x y)
+:(union x y)
+:(unionp p x y)
+:(unionvt x y)
+
+:(set-differenceq x y)
+:(set-differencev x y)
+:(set-difference x y)
+:(set-differencep p x y)
+:(set-differencevt x y)
+
+:(intersectionq x y)
+:(intersectionv x y)
+:(intersection x y)
+:(intersectionp p x y)
+:(intersectionvt x y)
+
+:(set-equalq? x y)
+:(set-equalv? x y)
+:(set-equale? x y)
+:(set-equal? p x y)
+:(set-equalp? p x y)
+
+:(subsetq? x y)
+:(subsetv? x y)
+:(subsete? x y)
+:(subsetp? p x y)
+:(subsetvt? x y)
+
+=== rings ===
+
+:(ring-backward l)
+:(ring-forward l)
+:(ring-forward-between r a b)
+:(ring-forward-to l o)
+
+These manipulate a list while treating it as a ring.
+
+=== minimizing and maximizing ==
+
+:(maximum l)
+:(minimum l)
+:(maximump p l)
+:(minimump p l)
+:(maximum-with-position l)
+:(minimum-with-position l)
+
+p is a function that returns a number.
+
+=== math ===
+
+:(sum l)
+:(sum p n)
+:(sum p l)
+:(product l)
+:(product p n)
+:(product p l)
+
+:(factorial n)
+:(choose n m)
+
+=== QobiScheme compatibility ===
+
+:(qfind x l)
+:(qcount x l)
+:(qposition x l)
+:(qremove x l)
+:(qtopological-sort p l)
+:(qset-equal? x y)
+:(qreduce f l i)
+:(qreduce-vector f v i)
+:(qreduce-n f n i)
+:(qmap-reduce g i f l . ls)
+:(qmap-reduce-n g i f n)
+:(qmap-reduce-vector g i f v . vs)
 
 === License ===
 

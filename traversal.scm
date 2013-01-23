@@ -5,10 +5,10 @@
 ;;; Compatibility with QobiScheme
 ;; map-reduce2 and map-reduce3 also changed
 
-(define (qfind x l) (finde x l))
-(define (qcount x l) (counte x l))
-(define (qposition x l) (positione x l))
-(define (qremove x l) (removee x l))
+(define qfind finde)
+(define qcount counte)
+(define qposition positione)
+(define qremove removee)
 
 (define (qreduce f l i)
  (cond ((null? l) i)
@@ -48,6 +48,8 @@
 	       (apply f
 		      (vector-ref v j)
 		      (map (lambda (v) (vector-ref v j)) vs)))))))
+
+(define qset-equal? set-equale?)
 
 ;;; Sequences
 
@@ -432,7 +434,7 @@
 
 (define (subsetv? x y) (every (lambda (xe) (memv xe y)) x))
 
-(define (subset? x y) (every (lambda (xe) (member xe y)) x))
+(define (subsete? x y) (every (lambda (xe) (member xe y)) x))
 
 (define (subsetp? p x y) (every (lambda (xe) (memp p xe y)) x))
 
@@ -440,9 +442,11 @@
 
 (define (set-equalv? x y) (and (subsetv? x y) (subsetv? y x)))
 
-(define (set-equal? x y) (and (subset? x y) (subset? y x)))
+(define (set-equale? x y) (and (subset? x y) (subset? y x)))
 
-(define (set-equalp? p x y) (and (subsetp? p x y) (subsetp? p y x)))
+(define (set-equal? p x y) (and (subsetp? p x y) (subsetp? p y x)))
+
+(define set-equalp? set-equal?)
 
 (define (unionq x y)
  ;; needs work: To eliminate REVERSE.
@@ -640,11 +644,6 @@
 	    predicate
 	    key)))
 
-(define (minp p l)
- (when (null? l) (error "fuck-up"))
- (let loop ((x (first l)) (l (rest l)))
-  (if (null? l) x (loop (if (p x (first l)) x (first l)) (rest l)))))
-
 (define (unionvt x y) (if (or (eq? x #t) (eq? y #t)) #t (unionv x y)))
 
 (define (intersectionvt x y)
@@ -736,7 +735,6 @@
 (define (ring-forward-between r a b)
  (take (ring-forward-to r a) (+ (positione b (ring-forward-to r a)) 1)))
 
-
 (define (maximum l)
  (define (m l x)
   (if (null? l) x
@@ -748,16 +746,16 @@
       (if (< (car l) x) (m (cdr l) (car l)) (m (cdr l) x))))
  (when (not (null? l)) (m (cdr l) (car l))))
 
-(define (maximump l p)
- (define (m p l x)
+(define (maximump p l)
+ (define (m l x)
   (if (null? l) x
-      (if (> (p (car l)) (p x)) (m p (cdr l) (car l)) (m p (cdr l) x))))
- (when (not (null? l)) (m p (cdr l) (car l))))
-(define (minimump l p)
- (define (m p l x)
+      (if (> (p (car l)) (p x)) (m (cdr l) (car l)) (m (cdr l) x))))
+ (when (not (null? l)) (m (cdr l) (car l))))
+(define (minimump p l)
+ (define (m l x)
   (if (null? l) x
-      (if (< (p (car l)) (p x)) (m p (cdr l) (car l)) (m p (cdr l) x))))
- (when (not (null? l)) (m p (cdr l) (car l))))
+      (if (< (p (car l)) (p x)) (m (cdr l) (car l)) (m (cdr l) x))))
+ (when (not (null? l)) (m (cdr l) (car l))))
 
 (define (maximum-with-position l)
  (let loop ((i 0) (r -1) (m #f) (l l))
@@ -774,6 +772,7 @@
       (if (< (first l) (if m m +inf.0))
 	  (loop (+ i 1) i (first l) (rest l))
 	  (loop (+ i 1) r m (rest l))))))
+
 (define (unzip l)
  (if (null? l) '()
      (map-n (lambda (i) (map (lambda (e) (list-ref e i)) l)) (length (first l)))))
