@@ -442,7 +442,7 @@
 
 (define (set-equalv? x y) (and (subsetv? x y) (subsetv? y x)))
 
-(define (set-equale? x y) (and (subset? x y) (subset? y x)))
+(define (set-equale? x y) (and (subsetq? x y) (subsetq? y x)))
 
 (define (set-equal? p x y) (and (subsetp? p x y) (subsetp? p y x)))
 
