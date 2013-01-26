@@ -1,18 +1,21 @@
-[[tags: egg gui]]
+[[tags: egg data]]
 [[toc:]]
 
-Do not edit this page, it is maintained in the this package's [https://github.com/abarbu/traversal github repository].
+This page is maintained in the package's
+[[https://github.com/abarbu/traversal|github repository]].
 
-= Traversal =
+= Traversal
 
-This is a Chicken Scheme egg which contains various list and vector traversal functions.
+This is a Chicken Scheme egg which contains various list and vector
+traversal functions. Many of the functions provided by this egg
+originate from Jeff Siskind's QobiScheme.
 
-== overall ==
+== overall
 
-The final character of many of these denotes the compairson function
-being used. 'q' compares with 'eq?', 'v' compares with 'eqv?', 'e'
-with 'equal?', 'p' and the lack of a final character denotes that the
-function takes a user-provided predicate.
+The final character of many of these functions denotes the compairson
+function being used. 'q' compares with 'eq?', 'v' compares with
+'eqv?', 'e' with 'equal?', 'p' and the lack of a final character
+denotes that the function takes a user-provided predicate.
 
 The following documentation uses the following notration: 'l' list,
 'n' number, 'v' vector, 'p' procedure (usually a predicate).
@@ -20,7 +23,7 @@ The following documentation uses the following notration: 'l' list,
 Some of the functionality of this egg is provided by other eggs, like
 srfi-1, with different naming conventions.
 
-=== lists ===
+=== lists
 
 <procedure>(countq x l)</procedure>
 <procedure>(countv x l)</procedure>
@@ -91,14 +94,14 @@ Merge sort.
 
 Transposes lists.
 
-=== creation ===
+=== creation
 
 <procedure>(enumerate n)</procedure>
 <procedure>(enumerate-vector n)</procedure>
 
 Produce a list or a vector containing 0 through n-1.
 
-=== assertions ===
+=== assertions
 
 <procedure>(some p l)</procedure>
 <procedure>(some-n p n)</procedure>
@@ -113,7 +116,7 @@ Produce a list or a vector containing 0 through n-1.
 
 Does p hold on each adjacent pair of elements in l.
 
-=== traversal ===
+=== traversal
 
 <procedure>(for-each-n f n)</procedure>
 <procedure>(for-each-n-decreasing f n)</procedure>
@@ -171,7 +174,7 @@ Like memq and assq but take a predicate for comparison.
 
 f will be passed the accumulator and each element of the list.
 
-=== sets ===
+=== sets
 
 <procedure>(unionq x y)</procedure>
 <procedure>(unionv x y)</procedure>
@@ -203,7 +206,7 @@ f will be passed the accumulator and each element of the list.
 <procedure>(subsetp? p x y)</procedure>
 <procedure>(subsetvt? x y)</procedure>
 
-=== rings ===
+=== rings
 
 <procedure>(ring-backward l)</procedure>
 <procedure>(ring-forward l)</procedure>
@@ -212,7 +215,7 @@ f will be passed the accumulator and each element of the list.
 
 These manipulate a list while treating it as a ring.
 
-=== minimizing and maximizing ==
+=== minimizing and maximizing
 
 <procedure>(maximum l)</procedure>
 <procedure>(minimum l)</procedure>
@@ -223,7 +226,7 @@ These manipulate a list while treating it as a ring.
 
 p is a function that returns a number.
 
-=== math ===
+=== math
 
 <procedure>(sum l)</procedure>
 <procedure>(sum p n)</procedure>
@@ -235,7 +238,7 @@ p is a function that returns a number.
 <procedure>(factorial n)</procedure>
 <procedure>(choose n m)</procedure>
 
-=== QobiScheme compatibility ===
+=== QobiScheme compatibility
 
 <procedure>(qfind x l)</procedure>
 <procedure>(qcount x l)</procedure>
@@ -250,13 +253,16 @@ p is a function that returns a number.
 <procedure>(qmap-reduce-n g i f n)</procedure>
 <procedure>(qmap-reduce-vector g i f v . vs)</procedure>
 
-=== License ===
+=== License
 
    Copyright 1993-1995 University of Toronto. All rights reserved.
    Copyright 1996 Technion. All rights reserved.
    Copyright 1996 and 1997 University of Vermont. All rights reserved.
    Copyright 1997-2001 NEC Research Institute, Inc. All rights reserved.
-   Copyright 2002-2012 Purdue University. All rights reserved.
+   Copyright 2002-2013 Purdue University. All rights reserved.
+
+   Contact Andrei Barbu at andrei@0xab.com.
+
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or

@@ -1,13 +1,16 @@
+
 = Traversal =
 
-This is a Chicken Scheme egg which contains various list and vector traversal functions.
+This is a Chicken Scheme egg which contains various list and vector
+traversal functions. Many of the functions provided by this egg
+originate from Jeff Siskind's QobiScheme.
 
 == overall ==
 
-The final character of many of these denotes the compairson function
-being used. 'q' compares with 'eq?', 'v' compares with 'eqv?', 'e'
-with 'equal?', 'p' and the lack of a final character denotes that the
-function takes a user-provided predicate.
+The final character of many of these functions denotes the compairson
+function being used. 'q' compares with 'eq?', 'v' compares with
+'eqv?', 'e' with 'equal?', 'p' and the lack of a final character
+denotes that the function takes a user-provided predicate.
 
 The following documentation uses the following notration: 'l' list,
 'n' number, 'v' vector, 'p' procedure (usually a predicate).
@@ -207,7 +210,7 @@ f will be passed the accumulator and each element of the list.
 
 These manipulate a list while treating it as a ring.
 
-=== minimizing and maximizing ==
+=== minimizing and maximizing ===
 
 :(maximum l)
 :(minimum l)
@@ -251,7 +254,10 @@ p is a function that returns a number.
    Copyright 1996 Technion. All rights reserved.
    Copyright 1996 and 1997 University of Vermont. All rights reserved.
    Copyright 1997-2001 NEC Research Institute, Inc. All rights reserved.
-   Copyright 2002-2012 Purdue University. All rights reserved.
+   Copyright 2002-2013 Purdue University. All rights reserved.
+
+   Contact Andrei Barbu at andrei@0xab.com.
+
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
