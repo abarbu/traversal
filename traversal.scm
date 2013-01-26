@@ -5,10 +5,10 @@
 ;;; Compatibility with QobiScheme
 ;; map-reduce2 and map-reduce3 also changed
 
-(define qfind finde)
-(define qcount counte)
-(define qposition positione)
-(define qremove removee)
+(define (qfind x l) (finde x l))
+(define (qcount x l) (counte x l))
+(define (qposition x l) (positione x l))
+(define (qremove x l) (removee x l))
 
 (define (qreduce f l i)
  (cond ((null? l) i)
@@ -49,7 +49,7 @@
 		      (vector-ref v j)
 		      (map (lambda (v) (vector-ref v j)) vs)))))))
 
-(define qset-equal? set-equale?)
+(define (qset-equale? x y) (set-equale? x y))
 
 ;;; Sequences
 
