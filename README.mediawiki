@@ -12,7 +12,7 @@ function being used. 'q' compares with 'eq?', 'v' compares with
 'eqv?', 'e' with 'equal?', 'p' and the lack of a final character
 denotes that the function takes a user-provided predicate.
 
-The following documentation uses the following notration: 'l' list,
+The following documentation uses the following notation: 'l' list,
 'n' number, 'v' vector, 'p' procedure (usually a predicate).
 
 Some of the functionality of this egg is provided by other eggs, like
@@ -52,8 +52,8 @@ srfi-1, with different naming conventions.
 
 :(remove-duplicatesq x)
 :(remove-duplicatesv x)
-:(remove-duplicates x)
-:(remove-duplicatesp p x)
+:(remove-duplicates p x)
+:(remove-duplicatese x)
 
 :(list-set! l i x)
 :(list-insert l i x)
@@ -239,6 +239,7 @@ p is a function that returns a number.
 :(qcount x l)
 :(qposition x l)
 :(qremove x l)
+:(qremove-duplicates l)
 :(qtopological-sort p l)
 :(qset-equal? x y)
 :(qreduce f l i)

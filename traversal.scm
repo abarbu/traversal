@@ -9,6 +9,7 @@
 (define (qcount x l) (counte x l))
 (define (qposition x l) (positione x l))
 (define (qremove x l) (removee x l))
+(define (qremove-duplicates l) (remove-duplicatese l))
 
 (define (qreduce f l i)
  (cond ((null? l) i)
@@ -546,14 +547,14 @@
 	((memv (first x) c) (loop (rest x) c))
 	(else (loop (rest x) (cons (first x) c))))))
 
-(define (remove-duplicates x)
+(define (remove-duplicatese x)
  ;; needs work: To eliminate REVERSE.
  (let loop ((x x) (c '()))
   (cond ((null? x) (reverse c))
 	((member (first x) c) (loop (rest x) c))
 	(else (loop (rest x) (cons (first x) c))))))
 
-(define (remove-duplicatesp p x)
+(define (remove-duplicates p x)
  ;; needs work: To eliminate REVERSE.
  (let loop ((x x) (c '()))
   (cond ((null? x) (reverse c))
