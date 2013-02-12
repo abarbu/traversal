@@ -10,6 +10,9 @@
 (define (qposition x l) (positione x l))
 (define (qremove x l) (removee x l))
 (define (qremove-duplicates l) (remove-duplicatese l))
+(define (qequivalence-classes x) (equivalence-classese x))
+(define (qtransitive-equivalence-classesp p x)
+ (transitive-equivalence-classes p x))
 
 (define (qreduce f l i)
  (cond ((null? l) i)
@@ -579,37 +582,37 @@
 	    (z (find-if (lambda (w) (eqv? y (first w))) x)))
       (if z (cons (cons y z) (removeq z x)) (cons (list y) x)))))
 
-(define (equivalence-classes x)
+(define (equivalence-classese x)
  ;; needs work: To make tail recursive.
  (if (null? x)
      '()
      (let* ((y (first x))
-	    (x (equivalence-classes (rest x)))
+	    (x (equivalence-classese (rest x)))
 	    (z (find-if (lambda (w) (equal? y (first w))) x)))
       (if z (cons (cons y z) (removeq z x)) (cons (list y) x)))))
 
-(define (transitive-equivalence-classesp p x)
+(define (transitive-equivalence-classes p x)
  ;; needs work: To make tail recursive.
  (if (null? x)
      '()
      (let* ((y (first x))
-	    (x (transitive-equivalence-classesp p (rest x)))
+	    (x (transitive-equivalence-classes p (rest x)))
 	    (z (find-if (lambda (w) (p y (first w))) x)))
       (if z (cons (cons y z) (removeq z x)) (cons (list y) x)))))
 
-(define (equivalence-classesp p x)
+(define (equivalence-classes p x)
  ;; This wrapper is necessary since P may not be transitive.
- (define (equivalence-classesp p x)
+ (define (equivalence-classes p x)
   ;; needs work: To make tail recursive.
   (if (null? x)
       '()
       (let* ((y (first x))
-	     (x (equivalence-classesp p (rest x)))
+	     (x (equivalence-classes p (rest x)))
 	     (z (find-if (lambda (w) (some (lambda (v) (p y v)) w)) x)))
        (if z (cons (cons y z) (removeq z x)) (cons (list y) x)))))
  (let loop ((c (map list x)))
   (let ((d (map (lambda (z) (qreduce append z '()))
-		(equivalence-classesp
+		(equivalence-classes
 		 (lambda (x y) (some (lambda (xe) (memp p xe y)) x)) c))))
    (if (= (length d) (length c)) d (loop d)))))
 

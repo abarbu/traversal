@@ -67,9 +67,9 @@ srfi-1, with different naming conventions.
 
 <procedure>(equivalence-classesq x)</procedure>
 <procedure>(equivalence-classesv x)</procedure>
-<procedure>(equivalence-classesp p x)</procedure>
-<procedure>(equivalence-classes x)</procedure>
-<procedure>(transitive-equivalence-classesp p x)</procedure>
+<procedure>(equivalence-classes p x)</procedure>
+<procedure>(equivalence-classese x)</procedure>
+<procedure>(transitive-equivalence-classes p x)</procedure>
 
 <procedure>(adjoinq x l)</procedure>
 <procedure>(adjoinv x l)</procedure>
@@ -253,6 +253,8 @@ p is a function that returns a number.
 <procedure>(qmap-reduce g i f l . ls)</procedure>
 <procedure>(qmap-reduce-n g i f n)</procedure>
 <procedure>(qmap-reduce-vector g i f v . vs)</procedure>
+<procedure>(qequivalence-classes x)</procedure>
+<procedure>(qtransitive-equivalence-classesp p x)</procedure>
 
 === License
 

@@ -50,10 +50,10 @@ srfi-1, with different naming conventions.
 :(removeq x l)
 :(removev x l)
 
-:(remove-duplicatesq x)
-:(remove-duplicatesv x)
-:(remove-duplicates p x)
-:(remove-duplicatese x)
+:(remove-duplicatesq l)
+:(remove-duplicatesv l)
+:(remove-duplicates p l)
+:(remove-duplicatese x l)
 
 :(list-set! l i x)
 :(list-insert l i x)
@@ -62,9 +62,9 @@ srfi-1, with different naming conventions.
 
 :(equivalence-classesq x)
 :(equivalence-classesv x)
-:(equivalence-classesp p x)
-:(equivalence-classes x)
-:(transitive-equivalence-classesp p x)
+:(equivalence-classes p x)
+:(equivalence-classese x)
+:(transitive-equivalence-classes p x)
 
 :(adjoinq x l)
 :(adjoinv x l)
@@ -248,6 +248,8 @@ p is a function that returns a number.
 :(qmap-reduce g i f l . ls)
 :(qmap-reduce-n g i f n)
 :(qmap-reduce-vector g i f v . vs)
+:(qequivalence-classes x)
+:(qtransitive-equivalence-classesp p x)
 
 === License ===
 
