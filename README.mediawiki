@@ -1,11 +1,11 @@
 
-= Traversal =
+== Traversal ==
 
 This is a Chicken Scheme egg which contains various list and vector
 traversal functions. Many of the functions provided by this egg
 originate from Jeff Siskind's QobiScheme.
 
-== overall ==
+=== overall ===
 
 The final character of many of these functions denotes the compairson
 function being used. 'q' compares with 'eq?', 'v' compares with
@@ -18,7 +18,7 @@ The following documentation uses the following notation: 'l' list,
 Some of the functionality of this egg is provided by other eggs, like
 srfi-1, with different naming conventions.
 
-=== lists ===
+==== lists ====
 
 :(countq x l)
 :(countv x l)
@@ -201,7 +201,7 @@ f will be passed the accumulator and each element of the list.
 :(subsetp? p x y)
 :(subsetvt? x y)
 
-=== rings ===
+==== rings ====
 
 :(ring-backward l)
 :(ring-forward l)
@@ -210,7 +210,7 @@ f will be passed the accumulator and each element of the list.
 
 These manipulate a list while treating it as a ring.
 
-=== minimizing and maximizing ===
+==== minimizing and maximizing ====
 
 :(maximum l)
 :(minimum l)
@@ -221,7 +221,7 @@ These manipulate a list while treating it as a ring.
 
 p is a function that returns a number.
 
-=== math ===
+==== math ====
 
 :(sum l)
 :(sum p n)
@@ -233,7 +233,7 @@ p is a function that returns a number.
 :(factorial n)
 :(choose n m)
 
-=== QobiScheme compatibility ===
+==== QobiScheme compatibility ====
 
 :(qfind x l)
 :(qcount x l)
@@ -262,13 +262,13 @@ p is a function that returns a number.
    Contact Andrei Barbu at andrei@0xab.com.
 
    This program is free software: you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
+   it under the terms of the GNU Lesser General Public License as published by
    the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   GNU General Public License for more details.
-   You should have received a copy of the GNU General Public License
+   GNU Lesser General Public License for more details.
+   You should have received a copy of the GNU Lesser General Public License
    along with this program.  If not, see http://www.gnu.org/licenses.
 __NOTOC__

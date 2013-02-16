@@ -3,7 +3,7 @@
 ((category data)
  (author "Jeffrey Mark Siskind")
  (maintainer "Andrei Barbu")
- (license "GPL")
+ (license "LGPL")
  (synopsis "Various list operations")
  (depends setup-helper miscmacros
           check-errors condition-utils vector-lib)
