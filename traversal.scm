@@ -54,6 +54,13 @@
 		      (map (lambda (v) (vector-ref v j)) vs)))))))
 
 (define (qset-equale? x y) (set-equale? x y))
+(define (qset-difference x y) (set-differencee x y))
+(define (qintersection x y) (set-intersectione x y))
+(define (qunion x y) (set-unione x y))
+(define (qmaximum l) (maximume l))
+(define (qminimum l) (minimume l))
+(define (qmaximump l p) (maximum p l))
+(define (qminimump l p) (minimum p l))
 
 ;;; Sequences
 
@@ -452,56 +459,56 @@
 
 (define set-equalp? set-equal?)
 
-(define (unionq x y)
+(define (set-unionq x y)
  ;; needs work: To eliminate REVERSE.
  (let loop ((l x) (c '()))
   (cond ((null? l) (append (reverse c) y))
 	((memq (first l) y) (loop (rest l) c))
 	(else (loop (rest l) (cons (first l) c))))))
 
-(define (unionv x y)
+(define (set-unionv x y)
  ;; needs work: To eliminate REVERSE.
  (let loop ((l x) (c '()))
   (cond ((null? l) (append (reverse c) y))
 	((memv (first l) y) (loop (rest l) c))
 	(else (loop (rest l) (cons (first l) c))))))
 
-(define (union x y)
+(define (set-unione x y)
  ;; needs work: To eliminate REVERSE.
  (let loop ((l x) (c '()))
   (cond ((null? l) (append (reverse c) y))
 	((member (first l) y) (loop (rest l) c))
 	(else (loop (rest l) (cons (first l) c))))))
 
-(define (unionp p x y)
+(define (set-union p x y)
  ;; needs work: To eliminate REVERSE.
  (let loop ((l x) (c '()))
   (cond ((null? l) (append (reverse c) y))
 	((memp p (first l) y) (loop (rest l) c))
 	(else (loop (rest l) (cons (first l) c))))))
 
-(define (intersectionq x y)
+(define (set-intersectionq x y)
  ;; needs work: To eliminate REVERSE.
  (let loop ((l x) (c '()))
   (cond ((null? l) (reverse c))
 	((memq (first l) y) (loop (rest l) (cons (first l) c)))
 	(else (loop (rest l) c)))))
 
-(define (intersectionv x y)
+(define (set-intersectionv x y)
  ;; needs work: To eliminate REVERSE.
  (let loop ((l x) (c '()))
   (cond ((null? l) (reverse c))
 	((memv (first l) y) (loop (rest l) (cons (first l) c)))
 	(else (loop (rest l) c)))))
 
-(define (intersection x y)
+(define (set-intersectione x y)
  ;; needs work: To eliminate REVERSE.
  (let loop ((l x) (c '()))
   (cond ((null? l) (reverse c))
 	((member (first l) y) (loop (rest l) (cons (first l) c)))
 	(else (loop (rest l) c)))))
 
-(define (intersectionp p x y)
+(define (set-intersection p x y)
  ;; needs work: To eliminate REVERSE.
  (let loop ((l x) (c '()))
   (cond ((null? l) (reverse c))
@@ -522,14 +529,14 @@
 	((memv (first l) y) (loop (rest l) c))
 	(else (loop (rest l) (cons (first l) c))))))
 
-(define (set-difference x y)
+(define (set-differencee x y)
  ;; needs work: To eliminate REVERSE.
  (let loop ((l x) (c '()))
   (cond ((null? l) (reverse c))
 	((member (first l) y) (loop (rest l) c))
 	(else (loop (rest l) (cons (first l) c))))))
 
-(define (set-differencep p x y)
+(define (set-difference p x y)
  ;; needs work: To eliminate REVERSE.
  (let loop ((l x) (c '()))
   (cond ((null? l) (reverse c))
@@ -648,10 +655,10 @@
 	    predicate
 	    key)))
 
-(define (unionvt x y) (if (or (eq? x #t) (eq? y #t)) #t (unionv x y)))
+(define (set-unionvt x y) (if (or (eq? x #t) (eq? y #t)) #t (set-unionv x y)))
 
-(define (intersectionvt x y)
- (cond ((eq? x #t) y) ((eq? y #t) x) (else (intersectionv x y))))
+(define (set-intersectionvt x y)
+ (cond ((eq? x #t) y) ((eq? y #t) x) (else (set-intersectionv x y))))
 
 (define (set-differencevt x y)
  (cond ((eq? y #t) '()) ((eq? x #t) x) (else (set-differencev x y))))
@@ -739,23 +746,23 @@
 (define (ring-forward-between r a b)
  (take (ring-forward-to r a) (+ (positione b (ring-forward-to r a)) 1)))
 
-(define (maximum l)
+(define (maximume l)
  (define (m l x)
   (if (null? l) x
       (if (> (car l) x) (m (cdr l) (car l)) (m (cdr l) x))))
  (when (not (null? l)) (m (cdr l) (car l))))
-(define (minimum l)
+(define (minimume l)
  (define (m l x)
   (if (null? l) x
       (if (< (car l) x) (m (cdr l) (car l)) (m (cdr l) x))))
  (when (not (null? l)) (m (cdr l) (car l))))
 
-(define (maximump p l)
+(define (maximum p l)
  (define (m l x)
   (if (null? l) x
       (if (> (p (car l)) (p x)) (m (cdr l) (car l)) (m (cdr l) x))))
  (when (not (null? l)) (m (cdr l) (car l))))
-(define (minimump p l)
+(define (minimum p l)
  (define (m l x)
   (if (null? l) x
       (if (< (p (car l)) (p x)) (m (cdr l) (car l)) (m (cdr l) x))))

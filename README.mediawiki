@@ -171,34 +171,33 @@ f will be passed the accumulator and each element of the list.
 
 === sets ===
 
-:(unionq x y)
-:(unionv x y)
-:(union x y)
-:(unionp p x y)
-:(unionvt x y)
+:(set-unionq x y)
+:(set-unionv x y)
+:(set-union p x y)
+:(set-unione x y)
+:(set-unionvt x y)
 
 :(set-differenceq x y)
 :(set-differencev x y)
-:(set-difference x y)
-:(set-differencep p x y)
+:(set-difference p x y)
+:(set-differencee x y)
 :(set-differencevt x y)
 
-:(intersectionq x y)
-:(intersectionv x y)
-:(intersection x y)
-:(intersectionp p x y)
-:(intersectionvt x y)
+:(set-intersectionq x y)
+:(set-intersectionv x y)
+:(set-intersection p x y)
+:(set-intersectione x y)
+:(set-intersectionvt x y)
 
 :(set-equalq? x y)
 :(set-equalv? x y)
 :(set-equale? x y)
 :(set-equal? p x y)
-:(set-equalp? p x y)
 
 :(subsetq? x y)
 :(subsetv? x y)
 :(subsete? x y)
-:(subsetp? p x y)
+:(subset? p x y)
 :(subsetvt? x y)
 
 ==== rings ====
@@ -212,10 +211,10 @@ These manipulate a list while treating it as a ring.
 
 ==== minimizing and maximizing ====
 
-:(maximum l)
-:(minimum l)
-:(maximump p l)
-:(minimump p l)
+:(maximump l)
+:(minimump l)
+:(maximum p l)
+:(minimum p l)
 :(maximum-with-position l)
 :(minimum-with-position l)
 
@@ -241,6 +240,9 @@ p is a function that returns a number.
 :(qremove x l)
 :(qremove-duplicates l)
 :(qtopological-sort p l)
+:(qset-difference x y)
+:(qset-intersection x y)
+:(qset-union x y)
 :(qset-equal? x y)
 :(qreduce f l i)
 :(qreduce-vector f v i)
@@ -250,6 +252,10 @@ p is a function that returns a number.
 :(qmap-reduce-vector g i f v . vs)
 :(qequivalence-classes x)
 :(qtransitive-equivalence-classesp p x)
+:(qmaximum l)
+:(qminimum l)
+:(qmaximump l p)
+:(qminimump l p)
 
 === License ===
 

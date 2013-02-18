@@ -176,34 +176,33 @@ f will be passed the accumulator and each element of the list.
 
 === sets
 
-<procedure>(unionq x y)</procedure>
-<procedure>(unionv x y)</procedure>
-<procedure>(union x y)</procedure>
-<procedure>(unionp p x y)</procedure>
-<procedure>(unionvt x y)</procedure>
+<procedure>(set-unionq x y)</procedure>
+<procedure>(set-unionv x y)</procedure>
+<procedure>(set-union p x y)</procedure>
+<procedure>(set-unione x y)</procedure>
+<procedure>(set-unionvt x y)</procedure>
 
 <procedure>(set-differenceq x y)</procedure>
 <procedure>(set-differencev x y)</procedure>
-<procedure>(set-difference x y)</procedure>
-<procedure>(set-differencep p x y)</procedure>
+<procedure>(set-difference p x y)</procedure>
+<procedure>(set-differencee x y)</procedure>
 <procedure>(set-differencevt x y)</procedure>
 
-<procedure>(intersectionq x y)</procedure>
-<procedure>(intersectionv x y)</procedure>
-<procedure>(intersection x y)</procedure>
-<procedure>(intersectionp p x y)</procedure>
-<procedure>(intersectionvt x y)</procedure>
+<procedure>(set-intersectionq x y)</procedure>
+<procedure>(set-intersectionv x y)</procedure>
+<procedure>(set-intersection p x y)</procedure>
+<procedure>(set-intersectione x y)</procedure>
+<procedure>(set-intersectionvt x y)</procedure>
 
 <procedure>(set-equalq? x y)</procedure>
 <procedure>(set-equalv? x y)</procedure>
 <procedure>(set-equale? x y)</procedure>
 <procedure>(set-equal? p x y)</procedure>
-<procedure>(set-equalp? p x y)</procedure>
 
 <procedure>(subsetq? x y)</procedure>
 <procedure>(subsetv? x y)</procedure>
 <procedure>(subsete? x y)</procedure>
-<procedure>(subsetp? p x y)</procedure>
+<procedure>(subset? p x y)</procedure>
 <procedure>(subsetvt? x y)</procedure>
 
 ==== rings
@@ -217,10 +216,10 @@ These manipulate a list while treating it as a ring.
 
 ==== minimizing and maximizing
 
-<procedure>(maximum l)</procedure>
-<procedure>(minimum l)</procedure>
-<procedure>(maximump p l)</procedure>
-<procedure>(minimump p l)</procedure>
+<procedure>(maximump l)</procedure>
+<procedure>(minimump l)</procedure>
+<procedure>(maximum p l)</procedure>
+<procedure>(minimum p l)</procedure>
 <procedure>(maximum-with-position l)</procedure>
 <procedure>(minimum-with-position l)</procedure>
 
@@ -246,6 +245,9 @@ p is a function that returns a number.
 <procedure>(qremove x l)</procedure>
 <procedure>(qremove-duplicates l)</procedure>
 <procedure>(qtopological-sort p l)</procedure>
+<procedure>(qset-difference x y)</procedure>
+<procedure>(qset-intersection x y)</procedure>
+<procedure>(qset-union x y)</procedure>
 <procedure>(qset-equal? x y)</procedure>
 <procedure>(qreduce f l i)</procedure>
 <procedure>(qreduce-vector f v i)</procedure>
@@ -255,6 +257,10 @@ p is a function that returns a number.
 <procedure>(qmap-reduce-vector g i f v . vs)</procedure>
 <procedure>(qequivalence-classes x)</procedure>
 <procedure>(qtransitive-equivalence-classesp p x)</procedure>
+<procedure>(qmaximum l)</procedure>
+<procedure>(qminimum l)</procedure>
+<procedure>(qmaximump l p)</procedure>
+<procedure>(qminimump l p)</procedure>
 
 === License
 
