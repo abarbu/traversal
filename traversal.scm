@@ -201,7 +201,8 @@
  (for-each-n (lambda (i) (f (vector-ref v i) i)) (vector-length v)))
 
 (define (for-each-n f n)
- (let loop ((i 0)) (when (< i n) (f i) (loop (+ i 1)))))
+ (let ((n (inexact->exact (round n))))
+  (let loop ((i 0)) (when (fx< i n) (f i) (loop (fx+ i 1))))))
 
 (define (for-each-from-a-up-to-b f a b)
  (let loop ((i a)) (when (< i b) (f i) (loop (+ i 1)))))
@@ -220,7 +221,7 @@
  (let loop ((i 0) (l l) (c '()))
   (if (null? l)
       (reverse c)
-      (loop (+ i 1) (rest l) (cons (f (first l) i) c)))))
+      (loop (fx+ i 1) (rest l) (cons (f (first l) i) c)))))
 
 (define (map-indexed-vector f v . &rest)
  ;; needs work: Won't work correctly when F is nondeterministic.
@@ -235,8 +236,9 @@
 
 (define (map-n f n)
  ;; needs work: To eliminate REVERSE.
- (let loop ((i 0) (c '()))
-  (if (< i n) (loop (+ i 1) (cons (f i) c)) (reverse c))))
+ (let ((n (inexact->exact (round n))))
+  (let loop ((i 0) (c '()))
+   (if (fx< i n) (loop (fx+ i 1) (cons (f i) c)) (reverse c)))))
 
 (define (map-vector f v . &rest)
  ;; needs work: Won't work correctly when F is nondeterministic.
@@ -251,16 +253,17 @@
 
 (define (map-n-vector f n)
  ;; needs work: Won't work correctly when F is nondeterministic.
- (let ((v (make-vector n)))
-  (let loop ((i 0))
-   (when (< i n)
-    (vector-set! v i (f i))
-    (loop (+ i 1))))
-  v))
+ (let ((n (inexact->exact (round n))))
+  (let ((v (make-vector n)))
+   (let loop ((i 0))
+    (when (fx< i n)
+     (vector-set! v i (f i))
+     (loop (fx+ i 1))))
+   v)))
 
 (define (enumerate n)
- (let loop ((i (- n 1)) (c '()))
-  (if (>= i 0) (loop (- i 1) (cons i c)) c)))
+ (let loop ((i (fx- (inexact->exact (round n)) 1)) (c '()))
+  (if (fx>= i 0) (loop (fx- i 1) (cons i c)) c)))
 
 (define (enumerate-vector n)
  (let ((v (make-vector n)))
@@ -778,7 +781,6 @@
       (if (> (first l) (if m m -inf.0))
 	  (loop (+ i 1) i (first l) (rest l))
 	  (loop (+ i 1) r m (rest l))))))
-
 (define (minimum-with-position l)
  (let loop ((i 0) (r -1) (m #f) (l l))
   (if (null? l)
