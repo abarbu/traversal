@@ -81,7 +81,15 @@ srfi-1, with different naming conventions.
 <procedure>(sublist list start end)</procedure>
 <procedure>(every-other list)</procedure>
 
+<procedure>(take-until p l)</procedure>
+<procedure>(drop-until p l)</procedure>
+
 Misc list manipulation stuff.
+
+<procedure>(group-by key l)</procedure>
+
+Find equivalence classes of the elements of l that are ''equal?''
+given output of ''key''.
 
 <procedure>(sort list predicate key)</procedure>
 

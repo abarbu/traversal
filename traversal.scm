@@ -14,9 +14,6 @@
 (define (qtransitive-equivalence-classesp p x)
  (transitive-equivalence-classes p x))
 
-(define (group-by f l)
- (transitive-equivalence-classes (lambda (a b) (equal? (f a) (f b))) l))
-
 (define (qreduce f l i)
  (cond ((null? l) i)
        ((null? (rest l)) (first l))
@@ -609,6 +606,9 @@
 	    (x (transitive-equivalence-classes p (rest x)))
 	    (z (find-if (lambda (w) (p y (first w))) x)))
       (if z (cons (cons y z) (removeq z x)) (cons (list y) x)))))
+
+(define (group-by key l)
+ (transitive-equivalence-classes (lambda (a b) (equal? (key a) (key b))) l))
 
 (define (equivalence-classes p x)
  ;; This wrapper is necessary since P may not be transitive.

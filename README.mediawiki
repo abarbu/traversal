@@ -76,7 +76,15 @@ srfi-1, with different naming conventions.
 :(sublist list start end)
 :(every-other list)
 
+:(take-until p l)
+:(drop-until p l)
+
 Misc list manipulation stuff.
+
+:(group-by key l)
+
+Find equivalence classes of the elements of l that are ''equal?''
+given output of ''key''.
 
 :(sort list predicate key)
 
