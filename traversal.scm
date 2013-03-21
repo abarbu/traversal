@@ -14,6 +14,9 @@
 (define (qtransitive-equivalence-classesp p x)
  (transitive-equivalence-classes p x))
 
+(define (group-by f l)
+ (transitive-equivalence-classes (lambda (a b) (equal? (f a) (f b))) l))
+
 (define (qreduce f l i)
  (cond ((null? l) i)
        ((null? (rest l)) (first l))
@@ -797,4 +800,10 @@
 (define (for-each-m-n f m n) (do ((i m (+ i 1))) ((> i n) #f) (f i)))
 (define (for-each-m-n-indexed f m n) (do ((i m (+ i 1))) ((> i n) #f) (f i (- i m))))
 (define (for-each-m-n-dec f m n) (do ((i m (- i 1))) ((< i n) #f) (f i)))
+
+(define (take-until p l)
+ (let loop ((l l) (a '())) (if (or (null? l) (p (car l))) (reverse a) (loop (cdr l) (cons (car l) a)))))
+
+(define (drop-until p l)
+ (let loop ((l l)) (if (or (null? l) (p (car l))) l (loop (cdr l)))))
 )
