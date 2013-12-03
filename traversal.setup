@@ -4,6 +4,6 @@
 
 (verify-extension-name "traversal")
 
-(setup-shared-extension-module 'traversal (extension-version "1.5")
+(setup-shared-extension-module 'traversal (extension-version "1.6")
   #:inline? #t #:types? #t
   #:compile-options '(-O3 -d2))

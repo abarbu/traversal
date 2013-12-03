@@ -795,13 +795,13 @@
 
 (define (map-m-n f m n)
  (let loop ((i m) (c '()))
-  (if (> i n) (reverse c) (loop (+ i 1) (cons (f i) c)))))
+  (if (>= i n) (reverse c) (loop (+ i 1) (cons (f i) c)))))
 (define (map-m-n-indexed f m n)
  (let loop ((i m) (c '()))
-  (if (> i n) (reverse c) (loop (+ i 1) (cons (f i (- i m)) c)))))
-(define (for-each-m-n f m n) (do ((i m (+ i 1))) ((> i n) #f) (f i)))
-(define (for-each-m-n-indexed f m n) (do ((i m (+ i 1))) ((> i n) #f) (f i (- i m))))
-(define (for-each-m-n-dec f m n) (do ((i m (- i 1))) ((< i n) #f) (f i)))
+  (if (>= i n) (reverse c) (loop (+ i 1) (cons (f i (- i m)) c)))))
+(define (for-each-m-n f m n) (do ((i m (+ i 1))) ((>= i n) #f) (f i)))
+(define (for-each-m-n-indexed f m n) (do ((i m (+ i 1))) ((>= i n) #f) (f i (- i m))))
+(define (for-each-m-n-dec f m n) (do ((i m (- i 1))) ((<= i n) #f) (f i)))
 
 (define (take-until p l)
  (let loop ((l l) (a '())) (if (or (null? l) (p (car l))) (reverse a) (loop (cdr l) (cons (car l) a)))))
