@@ -1,0 +1,13 @@
+;;;  -*- Hen -*-
+
+((category data)
+ (author "Jeffrey Mark Siskind")
+ (maintainer "Andrei Barbu")
+ (license "LGPL")
+ (synopsis "Various list operations")
+ (dependencies srfi-1 vector-lib)
+ (test-dependencies test)
+ (components (extension traversal
+                        (inline-file)
+                        (types-file)
+                        (csc-options -O3 -d2))))
