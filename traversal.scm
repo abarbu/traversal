@@ -1,6 +1,13 @@
 (module traversal *
-(import chicken scheme srfi-1 vector-lib)
-(require-extension srfi-1 vector-lib)
+
+(import scheme)
+
+(cond-expand
+  (chicken-4
+    (import chicken scheme srfi-1 vector-lib)
+    (require-extension srfi-1 vector-lib))
+  (chicken-5 (import (chicken base) (chicken fixnum) srfi-1 vector-lib)))
+
 
 ;;; Compatibility with QobiScheme
 ;; map-reduce2 and map-reduce3 also changed
