@@ -6,7 +6,6 @@
  (license "LGPL")
  (synopsis "Various list operations")
  (dependencies srfi-1 vector-lib)
- (test-dependencies test)
  (components (extension traversal
                         (inline-file)
                         (types-file)
