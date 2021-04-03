@@ -5,9 +5,7 @@
  (maintainer "Andrei Barbu")
  (license "LGPL")
  (synopsis "Various list operations")
- (depends setup-helper miscmacros
-          check-errors condition-utils vector-lib)
- (test-depends test)
+ (depends setup-helper vector-lib)
  (files "traversal.meta" 
         "traversal.release-info"
         "traversal.scm" 
